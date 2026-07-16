@@ -115,7 +115,10 @@ const state = {
         p1: { name: "일본 3박 4일", price: "15,000,000원" },
         p2: { name: "유럽 15박 17일", price: "100,000,000원" },
         p3: { name: "제주도 24박 25일", price: "300,000,000원" },
-        p4: { name: "스위스 융프라우 7박 8일", price: "450,000,000원" }
+        p4: { name: "스위스 융프라우 7박 8일", price: "450,000,000원" },
+        p5: { name: "베트남 5박 6일", price: "200,000,000원" },
+        p6: { name: "남극 12박 13일", price: "1,500,000,000원" },
+        p7: { name: "두바이 6박 7일", price: "10,000,000,000원" }
     }
 };
 
@@ -180,6 +183,51 @@ const PRODUCT_DETAILS = {
         ],
         included: ["왕복 전용기", "샬레 전체 임대 7박", "상주 셰프·집사 서비스", "여행자 보험"],
         excluded: ["개인 장비 구매", "일부 헬리스키 옵션", "개인 쇼핑 비용"]
+    },
+    p5: {
+        title: "울트라 럭셔리 에디션 · 베트남 5박 6일",
+        price: "200,000,000원",
+        image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><defs><linearGradient id=%22vn2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230f1e36%22/><stop offset=%22100%25%22 stop-color=%22%231f5c3f%22/></linearGradient></defs><rect width=%22400%22 height=%22300%22 fill=%22url(%23vn2)%22/><text x=%22200%22 y=%22150%22 font-size=%2264%22 text-anchor=%22middle%22>%F0%9F%8C%B4</text><text x=%22200%22 y=%22225%22 font-size=%2220%22 fill=%22%23c5a880%22 text-anchor=%22middle%22 font-family=%22Georgia, serif%22 letter-spacing=%224%22>VIETNAM</text></svg>",
+        tag: "ASIA · ULTRA LUXURY",
+        select: "베트남 5박 6일",
+        highlights: [
+            "다낭·하노이 비즈니스 클래스 왕복 항공",
+            "5성급 이상 초호화 리조트 프라이빗 풀빌라",
+            "현지 미쉐린급 셰프 프라이빗 코스 다이닝",
+            "전담 가이드 및 전용 차량 상시 동행"
+        ],
+        included: ["왕복 비즈니스 클래스 항공권", "전 일정 초호화 리조트", "전담 가이드 동행", "여행자 보험"],
+        excluded: ["개인 쇼핑 비용", "선택 관광 액티비티", "기내 유료 서비스"]
+    },
+    p6: {
+        title: "얼티밋 오지 탐험 · 남극 12박 13일",
+        price: "1,500,000,000원",
+        image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><defs><linearGradient id=%22at2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230a1830%22/><stop offset=%22100%25%22 stop-color=%22%233d6b8c%22/></linearGradient></defs><rect width=%22400%22 height=%22300%22 fill=%22url(%23at2)%22/><text x=%22200%22 y=%22150%22 font-size=%2264%22 text-anchor=%22middle%22>%F0%9F%A7%8A</text><text x=%22200%22 y=%22225%22 font-size=%2220%22 fill=%22%23c5a880%22 text-anchor=%22middle%22 font-family=%22Georgia, serif%22 letter-spacing=%224%22>ANTARCTICA</text></svg>",
+        tag: "EXTREME · PRIVATE EXPEDITION (잔여 1석)",
+        select: "남극 12박 13일",
+        highlights: [
+            "남극 대륙 단독 전세 크루즈 탐험",
+            "초호화 크루즈 스위트 전 객실 배정",
+            "빙하·펭귄 서식지 프라이빗 조디악 투어",
+            "극지 전문 가이드 및 전담 헬기 지원"
+        ],
+        included: ["왕복 전용기 및 크루즈 승선권", "전 일정 크루즈 스위트", "극지 전문 가이드 동행", "여행자 보험"],
+        excluded: ["개인 방한 장비 구매", "선택 헬기 투어", "개인 쇼핑 비용"]
+    },
+    p7: {
+        title: "로열 프라이빗 에디션 · 두바이 6박 7일",
+        price: "10,000,000,000원",
+        image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><defs><linearGradient id=%22db2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230f1e36%22/><stop offset=%22100%25%22 stop-color=%22%23a8792f%22/></linearGradient></defs><rect width=%22400%22 height=%22300%22 fill=%22url(%23db2)%22/><text x=%22200%22 y=%22150%22 font-size=%2264%22 text-anchor=%22middle%22>%F0%9F%8F%99%EF%B8%8F</text><text x=%22200%22 y=%22225%22 font-size=%2220%22 fill=%22%23f1e0c0%22 text-anchor=%22middle%22 font-family=%22Georgia, serif%22 letter-spacing=%224%22>DUBAI</text></svg>",
+        tag: "MIDDLE EAST · ROYAL EXCLUSIVE (잔여 1석)",
+        select: "두바이 6박 7일",
+        highlights: [
+            "두바이 전용 전세기 왕복 이동",
+            "7성급 호텔 로열 스위트 전 일정 배정",
+            "사막 프라이빗 사파리 및 팰컨 익스피리언스",
+            "전담 집사 및 의전 차량 서비스"
+        ],
+        included: ["왕복 전용기", "7성급 로열 스위트 전 일정", "전담 집사·의전 서비스", "여행자 보험"],
+        excluded: ["개인 쇼핑 비용", "선택 액티비티 옵션", "개인 경호 추가 옵션"]
     }
 };
 
