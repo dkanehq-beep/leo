@@ -684,3 +684,144 @@ if (reviewsTrack && reviewDotsContainer) {
         }, 100);
     }, { passive: true });
 }
+
+// 11. ✨ 여행 취향 테스트
+const QUIZ_QUESTIONS = [
+    {
+        text: "여행에서 가장 끌리는 순간은?",
+        options: [
+            { text: "료칸 온천에서 조용히 쉬는 시간", id: "p1" },
+            { text: "미술관과 유적지를 거니는 시간", id: "p2" },
+            { text: "가족과 풀빌라에서 노는 시간", id: "p3" },
+            { text: "눈 덮인 산에서 스키 타는 시간", id: "p4" }
+        ]
+    },
+    {
+        text: "선호하는 동행은?",
+        options: [
+            { text: "혼자 또는 연인과 단둘이", id: "p1" },
+            { text: "특별한 사람과 완벽한 격식을 갖춰", id: "p2" },
+            { text: "온 가족이 다같이", id: "p3" },
+            { text: "액티브한 친구들과", id: "p4" }
+        ]
+    },
+    {
+        text: "여행에 예산을 쓴다면?",
+        options: [
+            { text: "합리적이면서도 특별하게", id: "p1" },
+            { text: "한도 없이 최고의 경험으로", id: "p2" },
+            { text: "넉넉한 공간과 편안함에", id: "p3" },
+            { text: "완전히 독점적인 경험에", id: "p4" }
+        ]
+    },
+    {
+        text: "이상적인 여행 기간은?",
+        options: [
+            { text: "짧고 굵게 3~4일", id: "p1" },
+            { text: "여유롭게 2주 이상", id: "p2" },
+            { text: "느긋하게 오래오래", id: "p3" },
+            { text: "알차게 일주일", id: "p4" }
+        ]
+    }
+];
+
+const QUIZ_RESULTS = {
+    p1: { title: "고요한 미식가형", desc: "조용한 온천과 섬세한 미식을 사랑하는 당신에게는 프라이빗 료칸에서의 여유가 잘 어울려요." },
+    p2: { title: "클래식 그랜드투어러", desc: "역사와 품격이 살아있는 도시를 거니는 걸 좋아하는 당신에게는 유럽의 정교한 일정이 잘 맞아요." },
+    p3: { title: "여유로운 홈바디형", desc: "편안한 공간에서 사랑하는 사람들과 시간을 보내는 걸 가장 소중히 여기는 당신에게 어울리는 여정이에요." },
+    p4: { title: "액티브 어드벤처러", desc: "짜릿하고 특별한 순간을 놓치지 않는 당신에게는 알프스의 프라이빗 샬레가 딱이에요." }
+};
+
+const quizStartBtn = document.getElementById("quiz-start-btn");
+if (quizStartBtn) {
+    const quizStartEl = document.getElementById("quiz-start");
+    const quizQuestionEl = document.getElementById("quiz-question");
+    const quizResultEl = document.getElementById("quiz-result");
+    let quizCurrentIndex = 0;
+    let quizScores = { p1: 0, p2: 0, p3: 0, p4: 0 };
+
+    function renderQuizQuestion() {
+        const q = QUIZ_QUESTIONS[quizCurrentIndex];
+        document.getElementById("quiz-step-label").textContent = `Q${quizCurrentIndex + 1} / ${QUIZ_QUESTIONS.length}`;
+        document.getElementById("quiz-question-text").textContent = q.text;
+        document.getElementById("quiz-progress-bar").style.width = (quizCurrentIndex / QUIZ_QUESTIONS.length * 100) + "%";
+
+        const optionsEl = document.getElementById("quiz-options");
+        optionsEl.innerHTML = "";
+        q.options.forEach(function(opt) {
+            const btn = document.createElement("button");
+            btn.className = "quiz-option-btn";
+            btn.textContent = opt.text;
+            btn.addEventListener("click", function() {
+                quizScores[opt.id]++;
+                quizCurrentIndex++;
+                if (quizCurrentIndex < QUIZ_QUESTIONS.length) {
+                    renderQuizQuestion();
+                } else {
+                    showQuizResult();
+                }
+            });
+            optionsEl.appendChild(btn);
+        });
+    }
+
+    function showQuizResult() {
+        document.getElementById("quiz-progress-bar").style.width = "100%";
+        let bestId = "p1", bestScore = -1;
+        Object.keys(quizScores).forEach(function(id) {
+            if (quizScores[id] > bestScore) { bestScore = quizScores[id]; bestId = id; }
+        });
+
+        const result = QUIZ_RESULTS[bestId];
+        const product = PRODUCT_DETAILS[bestId];
+
+        document.getElementById("quiz-result-title").textContent = result.title;
+        document.getElementById("quiz-result-desc").textContent = result.desc;
+        document.getElementById("quiz-result-img").src = product.image;
+        document.getElementById("quiz-result-img").alt = product.title;
+        document.getElementById("quiz-result-tag").textContent = product.tag;
+        document.getElementById("quiz-result-product-title").textContent = product.title;
+        document.getElementById("quiz-result-price").textContent = product.price;
+
+        document.getElementById("quiz-view-btn").onclick = function() {
+            window.location.href = "products.html?highlight=" + bestId;
+        };
+
+        document.getElementById("quiz-share-btn").onclick = function() {
+            const shareText = `저는 [${result.title}]! LEO TRAVEL 취향 테스트 결과 "${product.title}"가 저에게 딱이래요.`;
+            if (navigator.share) {
+                navigator.share({ title: "LEO TRAVEL 여행 취향 테스트", text: shareText, url: window.location.href }).catch(function() {});
+            } else {
+                navigator.clipboard.writeText(shareText + " " + window.location.href)
+                    .then(function() { showToast("결과 복사 완료", "결과 텍스트가 복사되었습니다.", "success", 2800); })
+                    .catch(function() { showToast("복사 실패", "직접 선택해서 복사해 주세요.", "error"); });
+            }
+        };
+
+        quizQuestionEl.style.display = "none";
+        quizResultEl.style.display = "block";
+    }
+
+    quizStartBtn.addEventListener("click", function() {
+        quizCurrentIndex = 0;
+        quizScores = { p1: 0, p2: 0, p3: 0, p4: 0 };
+        quizStartEl.style.display = "none";
+        quizResultEl.style.display = "none";
+        quizQuestionEl.style.display = "block";
+        renderQuizQuestion();
+    });
+
+    const quizRetryBtn = document.getElementById("quiz-retry-btn");
+    if (quizRetryBtn) {
+        quizRetryBtn.addEventListener("click", function() {
+            quizResultEl.style.display = "none";
+            quizStartEl.style.display = "block";
+        });
+    }
+}
+
+// ✨ 취향 테스트 결과에서 넘어온 경우 해당 상품 모달 자동 오픈 (products.html?highlight=...)
+const highlightParam = new URLSearchParams(window.location.search).get("highlight");
+if (highlightParam && document.getElementById("product-modal")) {
+    setTimeout(function() { openProductModal(highlightParam); }, 300);
+}
