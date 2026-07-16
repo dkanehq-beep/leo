@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객후기 | LEO TRAVEL</title>
+    <meta name="description" content="LEO TRAVEL은 소수의 고객만을 위한 비스포크 프라이빗 여행을 설계하는 하이엔드 컨시어지 서비스입니다.">
+    <meta property="og:title" content="LEO TRAVEL | 하이엔드 맞춤 여행">
+    <meta property="og:description" content="오직 당신만을 위한 단 하나의 여정, LEO TRAVEL 프라이빗 컨시어지.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/europe.avif">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%230f1e36%22/><text x=%2250%22 y=%2262%22 font-size=%2250%22 fill=%22%23b89765%22 text-anchor=%22middle%22 font-family=%22serif%22>L</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 본문용 Noto Sans KR + 타이틀용 Noto Serif KR 동시 로드 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">LEO TRAVEL</a>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="products.html">여행상품</a></li>
+        <li><a href="reviews.html" class="active" aria-current="page">고객후기</a></li>
+        <li class="wish-trigger" onclick="toggleWishlistDrawer()">임시보관함 (<span id="wish-count">0</span>)</li>
+        <li><a href="contact.html">컨시어지 문의</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="다크 모드 토글">🌙</button>
+    <button id="hamburger-btn" class="hamburger-btn" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+<div id="nav-menu-overlay" class="nav-menu-overlay"></div>
+
+<h3 class="serif-title reveal shimmer-text">Guest Journal</h3>
+<div class="reviews-carousel">
+    <button class="review-nav prev" onclick="scrollReviews(-1)" aria-label="이전 후기">‹</button>
+    <div class="reviews fade-in" id="reviews-track">
+        <div class="review">
+            <div class="review-avatar">김</div>
+            <p class="stars">⭐⭐⭐⭐⭐</p>
+            <p class="review-text">"디테일한 동선 조율과 세심한 가이드는 대접받는 느낌을 명확히 주었습니다. 완벽하게 사생활이 보장된 멋진 가족 휴가였습니다."</p>
+            <p class="reviewer">- VIP 회원 김OO님</p>
+        </div>
+        <div class="review">
+            <div class="review-avatar">이</div>
+            <p class="stars">⭐⭐⭐⭐⭐</p>
+            <p class="review-text">"어려운 예약도 척척 해결해 주시는 컨시어지 서비스 덕분에 파리에서의 결혼기념일이 인생 최고의 순간으로 남았습니다."</p>
+            <p class="reviewer">- VIP 회원 이OO님</p>
+        </div>
+        <div class="review">
+            <div class="review-avatar">박</div>
+            <p class="stars">⭐⭐⭐⭐⭐</p>
+            <p class="review-text">"융프라우 샬레 일정은 상상 이상이었습니다. 사소한 요청까지 미리 준비되어 있어 여행 내내 아무 걱정이 없었어요."</p>
+            <p class="reviewer">- VIP 회원 박OO님</p>
+        </div>
+    </div>
+    <button class="review-nav next" onclick="scrollReviews(1)" aria-label="다음 후기">›</button>
+</div>
+<div class="review-dots" id="review-dots"></div>
+
+<!-- 찜하기 서랍장 -->
+<div id="wishlist-drawer" class="wishlist-drawer">
+    <div class="drawer-header">
+        <h4>시그니처 관심 상품</h4>
+        <button class="close-drawer-btn" onclick="toggleWishlistDrawer()">✕</button>
+    </div>
+    <div id="wishlist-items-container" class="drawer-content">
+        <p class="empty-msg">보관된 여정이 없습니다.</p>
+    </div>
+</div>
+<div id="drawer-overlay" class="drawer-overlay" onclick="toggleWishlistDrawer()"></div>
+
+<footer class="footer">
+    <div class="footer-links">
+        <a href="index.html">홈</a>
+        <a href="products.html">여행상품</a>
+        <a href="reviews.html">고객후기</a>
+        <a onclick="toggleWishlistDrawer()">임시보관함</a>
+        <a href="contact.html">컨시어지 문의</a>
+        <a href="https://open.kakao.com/o/sV2ts7Di" target="_blank">카카오 1:1 상담</a>
+        <!-- TODO: 010-0000-0000 을 실제 연락처로 교체하세요 -->
+        <a href="tel:01000000000">전화 상담 010-0000-0000</a>
+    </div>
+    <p>© 2026 LEO TRAVEL. All rights reserved.</p>
+    <p class="footer-bottom">본 사이트는 하이엔드 소수 정예 투어를 위한 공식 컨시어지 채널입니다.</p>
+</footer>
+
+<button id="scroll-top-btn" class="scroll-top-btn" aria-label="맨 위로 이동">↑</button>
+<div id="toast-container" class="toast-container"></div>
+
+<div class="floating-actions">
+    <!-- TODO: 010-0000-0000 을 실제 연락처로 교체하세요 -->
+    <a href="tel:01000000000" class="floating-call" aria-label="전화 상담">📞</a>
+    <a href="https://open.kakao.com/o/sV2ts7Di" class="floating-kakao" target="_blank" aria-label="1:1 컨시어지 상담">💬</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
