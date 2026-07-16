@@ -803,6 +803,8 @@ if (quizStartBtn) {
             btn.addEventListener("click", function() {
                 quizScores[opt.id]++;
                 quizCurrentIndex++;
+                btn.blur();
+                window.scrollTo(0, 0);
                 if (quizCurrentIndex < QUIZ_QUESTIONS.length) {
                     renderQuizQuestion();
                 } else {
@@ -853,6 +855,8 @@ if (quizStartBtn) {
     quizStartBtn.addEventListener("click", function() {
         quizCurrentIndex = 0;
         quizScores = { p1: 0, p2: 0, p3: 0, p4: 0 };
+        quizStartBtn.blur();
+        window.scrollTo(0, 0);
         quizStartEl.style.display = "none";
         quizResultEl.style.display = "none";
         quizQuestionEl.style.display = "block";
@@ -862,6 +866,8 @@ if (quizStartBtn) {
     const quizRetryBtn = document.getElementById("quiz-retry-btn");
     if (quizRetryBtn) {
         quizRetryBtn.addEventListener("click", function() {
+            quizRetryBtn.blur();
+            window.scrollTo(0, 0);
             quizResultEl.style.display = "none";
             quizStartEl.style.display = "block";
         });
