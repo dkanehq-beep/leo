@@ -187,7 +187,7 @@ const PRODUCT_DETAILS = {
     p5: {
         title: "울트라 럭셔리 에디션 · 베트남 5박 6일",
         price: "200,000,000원",
-        image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><defs><linearGradient id=%22vn2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230f1e36%22/><stop offset=%22100%25%22 stop-color=%22%231f5c3f%22/></linearGradient></defs><rect width=%22400%22 height=%22300%22 fill=%22url(%23vn2)%22/><text x=%22200%22 y=%22150%22 font-size=%2264%22 text-anchor=%22middle%22>%F0%9F%8C%B4</text><text x=%22200%22 y=%22225%22 font-size=%2220%22 fill=%22%23c5a880%22 text-anchor=%22middle%22 font-family=%22Georgia, serif%22 letter-spacing=%224%22>VIETNAM</text></svg>",
+        image: "images/vietnam.avif",
         tag: "ASIA · ULTRA LUXURY",
         select: "베트남 5박 6일",
         highlights: [
@@ -202,7 +202,7 @@ const PRODUCT_DETAILS = {
     p6: {
         title: "얼티밋 오지 탐험 · 남극 12박 13일",
         price: "1,500,000,000원",
-        image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><defs><linearGradient id=%22at2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230a1830%22/><stop offset=%22100%25%22 stop-color=%22%233d6b8c%22/></linearGradient></defs><rect width=%22400%22 height=%22300%22 fill=%22url(%23at2)%22/><text x=%22200%22 y=%22150%22 font-size=%2264%22 text-anchor=%22middle%22>%F0%9F%A7%8A</text><text x=%22200%22 y=%22225%22 font-size=%2220%22 fill=%22%23c5a880%22 text-anchor=%22middle%22 font-family=%22Georgia, serif%22 letter-spacing=%224%22>ANTARCTICA</text></svg>",
+        image: "images/antarctica.avif",
         tag: "EXTREME · PRIVATE EXPEDITION (잔여 1석)",
         select: "남극 12박 13일",
         highlights: [
@@ -217,7 +217,7 @@ const PRODUCT_DETAILS = {
     p7: {
         title: "로열 프라이빗 에디션 · 두바이 6박 7일",
         price: "10,000,000,000원",
-        image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><defs><linearGradient id=%22db2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230f1e36%22/><stop offset=%22100%25%22 stop-color=%22%23a8792f%22/></linearGradient></defs><rect width=%22400%22 height=%22300%22 fill=%22url(%23db2)%22/><text x=%22200%22 y=%22150%22 font-size=%2264%22 text-anchor=%22middle%22>%F0%9F%8F%99%EF%B8%8F</text><text x=%22200%22 y=%22225%22 font-size=%2220%22 fill=%22%23f1e0c0%22 text-anchor=%22middle%22 font-family=%22Georgia, serif%22 letter-spacing=%224%22>DUBAI</text></svg>",
+        image: "images/dubai.avif",
         tag: "MIDDLE EAST · ROYAL EXCLUSIVE (잔여 1석)",
         select: "두바이 6박 7일",
         highlights: [
