@@ -588,7 +588,7 @@ async function loadExchange(card) {
     valueEl.classList.add("is-loading");
 
     try {
-        const url = `https://api.frankfurter.app/latest?amount=${unit}&from=${currency}&to=KRW`;
+        const url = `https://api.frankfurter.dev/v1/latest?amount=${unit}&from=${currency}&to=KRW`;
         const res = await fetch(url);
         if (!res.ok) throw new Error();
         const data = await res.json();
